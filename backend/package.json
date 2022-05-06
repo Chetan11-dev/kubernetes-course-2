@@ -1,0 +1,11 @@
+{
+  "version": "1.0.11",
+  "scripts": {
+    "dev": "python3 manage.py runserver 0.0.0.0:8000",
+    "test": "python3 manage.py test",
+    "shell": "python3 manage.py shell",
+    "db:makemigrations": "python3 manage.py makemigrations",
+    "db:migrate": "python3 manage.py migrate",
+    "db:delete:": "rm -rf db.sqlite3"
+  }
+}

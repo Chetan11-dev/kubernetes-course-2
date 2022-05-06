@@ -1,0 +1,40 @@
+apiVersion: skaffold/v2beta25
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./k8s/app/*
+build:
+  local:
+    push: false
+  artifacts:
+    # in the docs directory build image from Dockerfile.dev and watch typescript and css files.
+    - image: chetan1111/any1
+      context: docs
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        infer:
+          - "**/*.ts"
+          - "**/*.tsx"
+          - "**/*.css"
+
+    # in the backend directory build image from Dockerfile.dev and watch python files.
+    - image: chetan1111/any2
+      context: backend
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        infer:
+          - "**/*.py"
+
+    # in the frontend directory build image from Dockerfile.dev and watch typescript and css files.
+    - image: chetan1111/any3
+      context: frontend
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        infer:
+          - "**/*.ts"
+          - "**/*.tsx"
+          - "**/*.css"
